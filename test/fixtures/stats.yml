@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient_id: MyString
+  temp: 1.5
+  systolic: 1
+  diastolic: 1
+  heart_rate: 1
+  resp_rate: 1
+
+two:
+  patient_id: MyString
+  temp: 1.5
+  systolic: 1
+  diastolic: 1
+  heart_rate: 1
+  resp_rate: 1

@@ -1,0 +1,55 @@
+<%= form_for [@patient, @stat], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :patient_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.label @patient.descriptor, :class => "checkbox" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "temperature", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :temp, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :systolic_pressure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :systolic, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :diastolic_pressure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :diastolic, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :heart_rate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :heart_rate, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :resp_rate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :resp_rate, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :noted_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :noted_at_date, data: {role: "datebox", options: '{"mode": "datebox"}'} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_field :noted_at_time, data: {role: "datebox", options: '{"mode": "timebox"}'} %> 
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                patient_stats_path(@patient), :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,48 @@
+<%- model_class = Stat -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:patient_id) %></th>
+      <th><%= model_class.human_attribute_name(:temp) %></th>
+      <th><%= model_class.human_attribute_name(:systolic) %></th>
+      <th><%= model_class.human_attribute_name(:diastolic) %></th>
+      <th><%= model_class.human_attribute_name(:heart_rate) %></th>
+      <th><%= model_class.human_attribute_name(:resp_rate) %></th>
+      <th><%= model_class.human_attribute_name(:noted_at) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stats.each do |stat| %>
+      <tr>
+        <td><%= link_to stat.id, patient_stat_path(@patient, stat) %></td>
+        <td><%= stat.patient_id %></td>
+        <td><%= stat.temp %></td>
+        <td><%= stat.systolic %></td>
+        <td><%= stat.diastolic %></td>
+        <td><%= stat.heart_rate %></td>
+        <td><%= stat.resp_rate %></td>
+        <td><%= stat.noted_at %></td>
+        <td><%=l stat.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_patient_stat_path(@patient, stat), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      patient_stat_path(@patient, stat),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_patient_stat_path(@patient),
+            :class => 'btn btn-primary' %>
